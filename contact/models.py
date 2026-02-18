@@ -11,9 +11,11 @@ from django.utils import timezone
 # first_name(string), last_name(string), phone(String)
 # email(email), created_date(date), description(text)
 
+# category(foreign key), show(boolean), picture (image)
+
 # Depois
-# category(foreign key), show(boolean), owner(foreign key)
-# picture (imagem)
+# owner(foreign key)
+
 
 # a gnt vai usar o contact pra create, select(buscar), update e delete(CRUD)
 class Contact(models.Model):
@@ -23,6 +25,9 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254, blank=True)
     create_date = models.DateTimeField(default=timezone.now)
     description =models.TextField(blank=True) #blank -> Opcional
+    show = models.BooleanField(default=True)
+    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
+
 
     def __str__(self) -> str:
         #self.pk -> é da super
