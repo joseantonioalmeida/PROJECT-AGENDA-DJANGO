@@ -18,8 +18,12 @@ from django.utils import timezone
 # a gnt vai usar o contact pra create, select(buscar), update e delete(CRUD)
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, blank=True)
     create_date = models.DateTimeField(default=timezone.now)
     description =models.TextField(blank=True) #blank -> Opcional
+
+    def __str__(self) -> str:
+        #self.pk -> é da super
+        return f'{self.first_name} {self.last_name} ({self.pk})' 
