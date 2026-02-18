@@ -13,3 +13,8 @@ class ContactAdmin(admin.ModelAdmin):
     list_max_show_all = 200
     list_editable = ('first_name',) #informar quais campos podem ser editados
     list_display_links = ('id','phone',)# exiba o link onde eu quero
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id','name',)
+    ordering = ('-id',)
