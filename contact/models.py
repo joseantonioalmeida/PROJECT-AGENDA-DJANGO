@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 # qualquer coisa que a gnt fazer no model temos que executar esse 
@@ -42,6 +43,11 @@ class Contact(models.Model):
         Category, on_delete=models.SET_NULL, 
         null=True, blank=True
             )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
 
     def __str__(self) -> str:
         #self.pk -> é da super
