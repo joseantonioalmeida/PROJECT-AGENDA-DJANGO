@@ -125,3 +125,9 @@ STATIC_ROOT = BASE_DIR / 'static' # collectstatic
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+try:
+    from project.local_settings import *
+    print('Settings loaded successfully')
+except ImportError:
+    print('No local settings file found')
