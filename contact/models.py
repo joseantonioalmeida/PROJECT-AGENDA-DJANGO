@@ -48,6 +48,10 @@ class Contact(models.Model):
     on_delete=models.SET_NULL,
     blank=True, null=True
 )
+    
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'.strip()
 
     def __str__(self) -> str:
         #self.pk -> é da super
