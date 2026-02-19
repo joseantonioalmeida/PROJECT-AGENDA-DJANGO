@@ -51,5 +51,5 @@ class Contact(models.Model):
 
     def __str__(self) -> str:
         #self.pk -> é da super
-        return f'{self.first_name} {self.last_name} ({self.pk})' 
+        return f'{self.first_name} {self.last_name}' 
 
