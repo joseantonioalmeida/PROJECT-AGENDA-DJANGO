@@ -44,10 +44,10 @@ class Contact(models.Model):
         null=True, blank=True
             )
     owner = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True, blank=True
-    )
+    User,
+    on_delete=models.SET_NULL,
+    blank=True, null=True
+)
 
     def __str__(self) -> str:
         #self.pk -> é da super
