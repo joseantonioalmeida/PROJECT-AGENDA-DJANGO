@@ -1,9 +1,6 @@
-from typing import Any, Mapping
+from typing import Any
 from django.core.exceptions import ValidationError
 from django import forms
-from django.core.files.base import File
-from django.db.models.base import Model
-from django.forms.utils import ErrorList
 from contact import models
 
 
@@ -14,7 +11,7 @@ class ContactForms(forms.ModelForm):
                 'placeholder':'Aqui veio da classe ContactForms'
             }
         ),
-        label= 'Primeiro Nomes',
+        label= 'Primeiro Nome',
         help_text='Digite seu primeiro nome'
     )
     def __init__(self, *args, **kwargs) -> None:
@@ -27,19 +24,29 @@ class ContactForms(forms.ModelForm):
             )
         
     def clean(self) -> dict[str, Any]:
+        # o método clean tem acesso a todos os campos do meu form
 
-        self.add_error(
-            'first_name',
-            ValidationError(    
-                    'Mensagem de erro',
-                    code='invalid'
-            )
-        )
-        self.add_error(
-            None,
-            ValidationError(    
-                    'Mensagem de erro 2',
-                    code='invalid'
-            )
-        )
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+        if first_name==last_name:
+            msg = ValidationError(    
+                        'Primeiro nome não pode ser igual ao segundo',
+                        code='invalid'
+                )
+            self.add_error('first_name',msg)
+            self.add_error('last_name',msg)
+       
         return super().clean()
+    
+    def clean_first_name(self) -> str:
+        first_name = self.cleaned_data.get('first_name')
+        if first_name == 'ABC':
+            self.add_error(
+                'first_name',
+                ValidationError(    
+                        'Nome inválido',
+                        code='invalid'
+                )
+            )
+
+        return first_name #type: ignore
