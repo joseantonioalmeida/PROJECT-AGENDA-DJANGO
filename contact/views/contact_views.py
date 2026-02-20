@@ -3,19 +3,24 @@ from contact import models
 from django.db.models import Q
 from django.db.models import Value
 from django.db.models.functions import Concat
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 
 def index(request):
     contacts = models.Contact.objects\
         .filter(show=True)\
-        .order_by('-id')[10:30]
+        .order_by('-id')
+    paginator = Paginator(contacts, 10) # show 15 contacts
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     
     # QuerySets
     # print(contacts.query)
 
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Contatos - '
     }    
     return render(
@@ -43,11 +48,15 @@ def search(request):
                 )\
         .order_by('-id')
     
+    paginator = Paginator(contacts, 10) # show 25 contacts
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     # QuerySets
     # print(contacts.query)
 
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Search - ',
         'search_value': search_value,
     }    
