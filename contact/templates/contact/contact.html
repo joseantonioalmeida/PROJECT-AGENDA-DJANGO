@@ -5,18 +5,11 @@
     <h1 class='single-contact-name'>
         {{ contact.first_name }} {{ contact.last_name }}
     </h1>
-    <p>
-        <b>ID: {{ contact.id }}</b>
-        <br>
-        <b>E-mail: {{ contact.email }}</b>
-        <br>
-        <b>Phone: {{ contact.phone }}</b>
-        <br>
-        <b>Created Date: {{ contact.create_date }}</b>
-        <br>
-        <b>Description: {{ contact.description }}</b>
-        <br>
-        <b>Category: {{ contact.category.name }}</b>
-    </p>
+    <p><b>ID: {{ contact.id }}</b></p>
+    <p><b>E-mail: {{ contact.email }}</b></p>
+    <p><b>Phone: {{ contact.phone }}</b></p>
+    <p><b>Created Date: {{ contact.create_date }}</b></p>
+    <p><b>Description: {{ contact.description }}</b></p>
+    <p><b>Category: {{ contact.category.name }}</b></p>
 </div>
 {% endblock content %}
