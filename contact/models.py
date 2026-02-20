@@ -11,14 +11,10 @@ from django.contrib.auth.models import User
 # id (Primary key)
 # first_name(string), last_name(string), phone(String)
 # email(email), created_date(date), description(text)
-
 # category(foreign key), show(boolean), picture (image)
-
-# Depois
 # owner(foreign key)
 
 
-# a gnt vai usar o contact pra create, select(buscar), update e delete(CRUD)
 class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
@@ -30,6 +26,7 @@ class Category(models.Model):
         return self.name
 
 
+# a gnt vai usar o contact pra create, select(buscar), update e delete(CRUD)
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=True)

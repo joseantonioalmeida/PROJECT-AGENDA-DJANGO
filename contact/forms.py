@@ -20,7 +20,7 @@ class ContactForms(forms.ModelForm):
     class Meta:
         model = models.Contact  
         fields = (
-            'first_name', 'last_name',
+            'first_name', 'last_name', 'phone', 'email','description', 'category',
             )
         
     def clean(self) -> dict[str, Any]:
