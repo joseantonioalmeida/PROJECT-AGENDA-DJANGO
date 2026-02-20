@@ -128,6 +128,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 try:
     from project.local_settings import *
-    print('Settings loaded successfully')
-except ImportError:
-    print('No local settings file found')
+    # print('Settings loaded successfully')
+except ImportError:...
+    # print('No local settings file found')
