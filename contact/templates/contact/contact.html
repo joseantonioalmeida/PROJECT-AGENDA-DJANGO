@@ -1,6 +1,8 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+
+<!-- Single Contact -->
 <div class="single-contact">
     <h1 class='single-contact-name'>
         {{ contact.first_name }} {{ contact.last_name }}
@@ -11,5 +13,42 @@
     <p><b>Created Date: {{ contact.create_date }}</b></p>
     <p><b>Description: {{ contact.description }}</b></p>
     <p><b>Category: {{ contact.category.name }}</b></p>
+    <div class='contact-links'>
+        <a class='btn btn-link' href='{% url "contact:update" contact.id %}'>
+            Update
+        </a>
+        <a class='btn btn-link btn-delete' href="{% url 'contact:delete' contact.id %}">
+            Delete
+        </a>
+    </div>
 </div>
+
+<!-- Modal -->
+{% if show_delete_modal %}
+<div class="modal-overlay">
+    <div class="modal-card">
+        <h2>Confirmar exclusão</h2>
+
+        <p>
+            Tem certeza que deseja apagar
+            <strong>{{ contact.first_name }} {{ contact.last_name }}</strong>?
+        </p>
+
+        <div class="modal-actions">
+            <form method="POST" action="{% url 'contact:delete' contact.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-delete">
+                    Sim, apagar
+                </button>
+            </form>
+
+            <a href="{% url 'contact:contact' contact.id %}"
+               class="btn btn-link">
+                Cancelar
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% endblock content %}

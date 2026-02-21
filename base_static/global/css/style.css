@@ -314,3 +314,87 @@ svg {
     filter: brightness(80%);
     box-shadow: 0 0 5px var(--link-dark-color);
 }
+
+.contact-links {
+    margin-block: calc(var(--small-font-size) *2);
+    display: flex;
+    align-items: center;
+    gap: 0 var(--spacing);
+}
+
+.btn-link {
+    font-size: var(--small-font-size);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1rem;
+    display: block;
+    line-height: var(--small-font-size);
+}
+
+.btn-delete {
+    background: tomato;
+}
+
+/* ===== MODAL DELETE ===== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 30, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn var(--transition-fast) ease-in-out;
+}
+
+.modal-card {
+    background: var(--clr-white);
+    padding: calc(var(--spacing) * 2);
+    border-radius: var(--default-border-radius);
+    box-shadow: 0 10px 30px var(--clr-dark-shadow-20);
+    max-width: 40rem;
+    width: 90%;
+    text-align: center;
+    animation: slideUp var(--transition-fast) ease-out;
+}
+
+.modal-card h2 {
+    font-size: var(--medium-font-size);
+    margin-bottom: var(--spacing);
+}
+
+.modal-card p {
+    margin-bottom: calc(var(--spacing) * 1.5);
+    font-size: var(--small-font-size);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing);
+}
+
+/* Animações */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

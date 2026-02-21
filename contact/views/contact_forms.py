@@ -53,7 +53,7 @@ def update(request, contact_id):
         # se o form não estiver nenhum erro, ou seja for válido.
         if form.is_valid():
             contact = form.save()
-            return redirect('contact:update', contact_id=contact.id)
+            return redirect('contact:contact', contact_id=contact.id)
 
         return render(
             request,
@@ -70,4 +70,24 @@ def update(request, contact_id):
         request,
         'contact/create.html',
         context= context,
+    )
+
+
+def delete(request, contact_id):
+    contact = get_object_or_404(
+        Contact, pk=contact_id, show=True
+    )
+
+    if request.method == 'POST':
+        contact.delete()
+        return redirect('contact:index')
+
+    # GET → apenas ativa modal
+    return render(
+        request,
+        'contact/contact.html',
+        {
+            'contact': contact,
+            'show_delete_modal': True,
+        }
     )
