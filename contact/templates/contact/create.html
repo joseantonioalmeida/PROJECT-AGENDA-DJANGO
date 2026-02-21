@@ -15,8 +15,14 @@
                     <p class='help-text'>
                         {{ field.help_text }}
                     </p>
+                    {% endif %}
+                </div>
+
+                {% if field.name == 'picture' and field.value.url %}
+                <div class='form-group'>
+                    <img src='{{ field.value.url }}' alt=''>
+                </div>
                 {% endif %}
-            </div>
             {% endfor %}
         </div>
         {% if form.non_field_errors %}
@@ -31,7 +37,7 @@
 
         <div class="form-content">
             <div class="form-group">
-                <button class='btn' type="submit">Submit</button>
+                <button class='btn' type="submit">Enviar</button>
             </div>
         </div>
     </form>

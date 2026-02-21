@@ -5,22 +5,29 @@ from contact import models
 
 
 class ContactForms(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             'placeholder':'Aqui veio da classe ContactForms'
+    #         }
+    #     ),
+    #     label= 'Primeiro Nome',
+    #     help_text='Digite seu primeiro nome'
+    # )
+
+    picture = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'placeholder':'Aqui veio da classe ContactForms'
+                'accept': 'image/*'
             }
-        ),
-        label= 'Primeiro Nome',
-        help_text='Digite seu primeiro nome'
+        )
     )
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
 
     class Meta:
         model = models.Contact  
         fields = (
-            'first_name', 'last_name', 'phone', 'email','description', 'category',
+            'first_name', 'last_name', 'phone', 'email','description', 
+            'category', 'picture',
             )
         
     def clean(self) -> dict[str, Any]:

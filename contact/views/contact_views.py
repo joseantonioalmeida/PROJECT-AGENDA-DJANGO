@@ -67,11 +67,6 @@ def search(request):
     )
 
 def contact(request, contact_id):
-    # single_contact = models.Contact.objects.filter(pk=contact_id).first()
-
-    # if single_contact is None:
-    #     raise Http404()
-    
     single_contact = get_object_or_404(
         models.Contact.objects.filter(pk=contact_id, show=True),
         )
