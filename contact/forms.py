@@ -2,9 +2,13 @@ from typing import Any
 from django.core.exceptions import ValidationError
 from django import forms
 from contact import models
+from django.contrib.auth.forms import UserCreationForm
 
 
 class ContactForms(forms.ModelForm):
+
+
+
     # first_name = forms.CharField(
     #     widget=forms.TextInput(
     #         attrs={
@@ -56,4 +60,7 @@ class ContactForms(forms.ModelForm):
                 )
             )
 
-        return first_name #type: ignore
+        return first_name #type:ignore 
+    
+class RegisterForm(UserCreationForm):
+    ...
