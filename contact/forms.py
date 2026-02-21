@@ -65,6 +65,11 @@ class ContactForms(forms.ModelForm):
         return first_name #type:ignore 
     
 class RegisterForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # isso remove o autofocus do field username que o django colocou
+        self.fields['username'].widget.attrs.pop('autofocus', None)
+
     first_name = forms.CharField(
         required=True,
         min_length=3,
@@ -95,7 +100,7 @@ class RegisterForm(UserCreationForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'placeholder':'Digite seu usuário'
+                'placeholder':'Digite seu usuário',
                 }
         )
     )
