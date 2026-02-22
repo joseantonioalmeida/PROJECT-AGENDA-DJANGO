@@ -23,6 +23,7 @@ class ContactForms(forms.ModelForm):
     # )
 
     picture = forms.ImageField(
+        required=False,
         widget=forms.FileInput(
             attrs={
                 'accept': 'image/*'
