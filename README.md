@@ -8,13 +8,20 @@ Além da aplicação, este repositório documenta um Deploy Real em ambiente Lin
 
 ##  Funcionalidades
 
-✔ Cadastro de usuários  
+✔ Cadastro de usuários
+
 ✔ Login e logout  
+
 ✔ CRUD completo de contatos (Criar, Ler, Atualizar e Excluir) 
+
 ✔ Associação de contatos por usuário (privacidade)  
+
 ✔ Pesquisa avançada por nome, e-mail ou telefone 
+
 ✔ UX de confirmação para exclusão   
+
 ✔ Estilização responsiva com CSS personalizado
+
 ✔ Cadastro de usuários, Login e Logout
 
 ---
@@ -29,9 +36,13 @@ Além da aplicação, este repositório documenta um Deploy Real em ambiente Lin
   *HTML5 / CSS3.
 ## Deploy & DevOps:
   *SO: Windows 11 com WSL2 (Ubuntu 22.04).
+  
   *Porta de Saída: 80 (HTTP Padrão).
+  
   *Web Server: Nginx (Proxy Reverso e entrega de arquivos estáticos).
+  
   *App Server: Gunicorn (WSGI HTTP Server).
+  
   *Controle de Versão: Git (Fluxo de deploy via Git Push para o servidor).
 
 ---
@@ -39,7 +50,9 @@ Além da aplicação, este repositório documenta um Deploy Real em ambiente Lin
 ## 🏗 Arquitetura do Deploy (WSL2)
 O servidor foi estruturado para ser acessível diretamente pela rede:
 1. Ponte de Rede: O Windows redireciona o tráfego da porta 80 (ou porta personalizada via netsh) para o IP interno do WSL2.
+
 2. Nginx: Escuta na Porta 80, servindo arquivos CSS/JS da pasta staticfiles e repassando requisições para o Gunicorn.
+
 3. Gunicorn: Gerencia os processos do Django através de um Unix Socket (/run/agenda.sock), conectando-se ao PostgreSQL para persistência de dados.
 
 ---
@@ -48,19 +61,28 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 
 📦 PROJECT-AGENDA-DJANGO
 ┣ 📂 contact (App principal e lógica da agenda).
+
 ┣ 📂 project (Configurações globais e conexão com DB).
+
 ┣ 📂 utils (Scripts para geração de dados fake).
+
 ┣ 📜 manage.py.
+
 ┣ 📜 requirements.txt.
+
 ┗ 📂 docs (Contém guias de configuração: gunicorn.txt, nginx-http.txt, server.md.txt).
 
 ---
 📌 Uso Básico
 
 ✔ Registrar novo usuário.
+
 ✔ Login.
+
 ✔ Adicionar contato.
+
 ✔ Editar contato.
+
 ✔ Excluir contato com confirmação.
 
 ---
@@ -68,10 +90,14 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 💬 O que eu Aprendi com esse Projeto
 
   *Django MVT: Organização de rotas, models, formulários e views.
+  
   *Banco de Dados Relacional: Migração de SQLite para PostgreSQL e gestão de roles/privilégios.
+  
   *Segurança: Autenticação de usuários e proteção de rotas.
+  
   *DevOps: Configuração de servidores Linux, escrita de arquivos de serviço no systemd, gerenciamento de permissões de
             pastas (chmod/chown) e configuração de proxy reverso no Nginx na Porta 80.
+  
   *Git & GitHub.
 
 ---
@@ -122,11 +148,15 @@ Para entender como este projeto foi colocado no ar, consulte os arquivos explica
 
 ## 🏗 Arquitetura do Deploy
 O fluxo de funcionamento do servidor foi configurado da seguinte forma:
+
 1. Usuário acessa o IP do Windows na porta 3390.
+
 2. O Portproxy do Windows redireciona o tráfego para o IP interno do WSL2.
+
 3. O Nginx recebe a requisição:
     3.1 Se for /static/, ele entrega o CSS/JS diretamente da pasta staticfiles.
     3.2 Se for dinâmico, ele repassa para o Gunicorn.
+
 4. O Gunicorn processa a lógica do Django através de um Unix Socket (mais rápido que portas TCP).
 ---
 
