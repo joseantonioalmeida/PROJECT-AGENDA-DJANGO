@@ -19,13 +19,15 @@ Além da aplicação, este repositório documenta um Deploy Real em ambiente Lin
 
 ---
 
-## 🛠 Tecnologias e Infraestrutura
+# 🛠 Tecnologias e Infraestrutura
 
-# Desenvolvimento & Produção:
+## Desenvolvimento & Produção:
   *Python 3.10+ & Django 5.x.
+  
   *PostgreSQL (Banco de dados de produção).
+  
   *HTML5 / CSS3.
-# Deploy & DevOps:
+## Deploy & DevOps:
   *SO: Windows 11 com WSL2 (Ubuntu 22.04).
   *Porta de Saída: 80 (HTTP Padrão).
   *Web Server: Nginx (Proxy Reverso e entrega de arquivos estáticos).
