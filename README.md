@@ -60,6 +60,7 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 ## 💡 Estrutura do Projeto
 
 📦 PROJECT-AGENDA-DJANGO
+
 ┣ 📂 contact (App principal e lógica da agenda).
 
 ┣ 📂 project (Configurações globais e conexão com DB).
@@ -73,7 +74,7 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 ┗ 📂 docs (Contém guias de configuração: gunicorn.txt, nginx-http.txt, server.md.txt).
 
 ---
-📌 Uso Básico
+## 📌 Uso Básico
 
 ✔ Registrar novo usuário.
 
@@ -87,7 +88,7 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 
 ---
 
-💬 O que eu Aprendi com esse Projeto
+## 💬 O que eu Aprendi com esse Projeto
 
   *Django MVT: Organização de rotas, models, formulários e views.
   
