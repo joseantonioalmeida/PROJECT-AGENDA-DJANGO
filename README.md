@@ -22,15 +22,15 @@ Além da aplicação, este repositório documenta um Deploy Real em ambiente Lin
 ## 🛠 Tecnologias e Infraestrutura
 
 # Desenvolvimento & Produção:
-  *Python 3.10+ & Django 5.x;
-  *PostgreSQL (Banco de dados de produção);
-  *HTML5 / CSS3;
+  *Python 3.10+ & Django 5.x.
+  *PostgreSQL (Banco de dados de produção).
+  *HTML5 / CSS3.
 # Deploy & DevOps:
-  *SO: Windows 11 com WSL2 (Ubuntu 22.04);
-  *Porta de Saída: 80 (HTTP Padrão);
-  *Web Server: Nginx (Proxy Reverso e entrega de arquivos estáticos);
-  *App Server: Gunicorn (WSGI HTTP Server);
-  *Controle de Versão: Git (Fluxo de deploy via Git Push para o servidor);
+  *SO: Windows 11 com WSL2 (Ubuntu 22.04).
+  *Porta de Saída: 80 (HTTP Padrão).
+  *Web Server: Nginx (Proxy Reverso e entrega de arquivos estáticos).
+  *App Server: Gunicorn (WSGI HTTP Server).
+  *Controle de Versão: Git (Fluxo de deploy via Git Push para o servidor).
 
 ---
 
@@ -45,32 +45,32 @@ O servidor foi estruturado para ser acessível diretamente pela rede:
 ## 💡 Estrutura do Projeto
 
 📦 PROJECT-AGENDA-DJANGO
-┣ 📂 contact (App principal e lógica da agenda)
-┣ 📂 project (Configurações globais e conexão com DB)
-┣ 📂 utils (Scripts para geração de dados fake)
-┣ 📜 manage.py
-┣ 📜 requirements.txt
-┗ 📂 docs (Contém guias de configuração: gunicorn.txt, nginx-http.txt, server.md.txt)
+┣ 📂 contact (App principal e lógica da agenda).
+┣ 📂 project (Configurações globais e conexão com DB).
+┣ 📂 utils (Scripts para geração de dados fake).
+┣ 📜 manage.py.
+┣ 📜 requirements.txt.
+┗ 📂 docs (Contém guias de configuração: gunicorn.txt, nginx-http.txt, server.md.txt).
 
 ---
 📌 Uso Básico
 
-✔ Registrar novo usuário
-✔ Login
-✔ Adicionar contato
-✔ Editar contato
-✔ Excluir contato com confirmação
+✔ Registrar novo usuário.
+✔ Login.
+✔ Adicionar contato.
+✔ Editar contato.
+✔ Excluir contato com confirmação.
 
 ---
 
 💬 O que eu Aprendi com esse Projeto
 
-  *Django MVT: Organização de rotas, models, formulários e views;
-  *Banco de Dados Relacional: Migração de SQLite para PostgreSQL e gestão de roles/privilégios;
+  *Django MVT: Organização de rotas, models, formulários e views.
+  *Banco de Dados Relacional: Migração de SQLite para PostgreSQL e gestão de roles/privilégios.
   *Segurança: Autenticação de usuários e proteção de rotas.
   *DevOps: Configuração de servidores Linux, escrita de arquivos de serviço no systemd, gerenciamento de permissões de
-            pastas (chmod/chown) e configuração de proxy reverso no Nginx na Porta 80;
-  *Git & GitHub;
+            pastas (chmod/chown) e configuração de proxy reverso no Nginx na Porta 80.
+  *Git & GitHub.
 
 ---
 
